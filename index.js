@@ -27,3 +27,19 @@ db.connect((err) => {
   }
   console.log('Connection Successfully!');
 });
+
+
+//Buat Method get dn post
+
+//Get
+app.get('/api/users', (req, res) => {
+    db.query('SELECT * FROM mahasiswa', (err, results) => {
+        if (err) {
+            console.error('Error executing query:0' + err.stack);
+            res.status(500).send('Error fetching Users');
+            return;
+        }
+        res.json(results);
+    });
+});
+
